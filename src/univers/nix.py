@@ -7,9 +7,18 @@
 # Visit https://aboutcode.org and https://github.com/aboutcode-org/univers for support and download.
 
 """
-Python port of Nix's ``builtins.compareVersions``.
-https://nix.dev/manual/nix/latest/language/builtins.html#builtins-compareVersions
+Compare version strings of software distributed through Nixpkgs. Refer to
+Nixpkgs contributor documentation on how versioning is handled there:
+https://github.com/NixOS/nixpkgs/blob/master/pkgs/README.md#versioning
 
+Note that Nix version handling is not authoritative for versioning syntax or
+semantics in Nixpkgs. It's merely a compatibility constraint for supporting
+unmaintained legacy Nix use cases around ``nix-env``. But one can assume that
+versions of a given package from any Nixpkgs release will be ordered correctly
+by Nix, which is why it's included here.
+
+The ordering is that of Nix's ``builtins.compareVersions``:
+https://nix.dev/manual/nix/latest/language/builtins.html#builtins-compareVersions
 The reference implementation is ``compareVersions`` and ``componentsLT`` in
 https://github.com/NixOS/nix/blob/534f199c9a34ace17d4db26fa3d377ee904bdf03/src/libstore/names.cc
 and this port reproduces it exactly:
